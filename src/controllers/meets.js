@@ -26,8 +26,10 @@ const meet = {
 		topic_id = await topic.get({ _id: topic_id });
 		students_all = await student.getAll();
 
-		if (topic_id.error) return error;
-		if (students_all.error) return error;
+		try {
+			if (topic_id.error) return error;
+			if (students_all.error) return error;
+		} catch {};
 
 		let total_students = [];
 		for (i in students_all) {
