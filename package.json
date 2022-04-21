@@ -16,6 +16,6 @@
     "start": "node src/index.js",
     "test": "jest"
   },
-  "author": "Anael Jonas",
+  "author": "Anael Jonas & Samuel Alcantara",
   "license": "ISC"
 }
