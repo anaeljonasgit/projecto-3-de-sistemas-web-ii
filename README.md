@@ -4,34 +4,34 @@ Essa é uma API simplificada de encontro de alunos (meets). Ela possui 1 teste s
 
 ## Students
 
-/students
+GET /students
 
-/students/create
+POST /students/create
 
-/students/:id
+GET /students/:id
 
-/students/:id/update
+PUT /students/:id/update
 
-/students/:id/delete
+DELETE /students/:id/delete
 
-/students/login
+POST /students/login
 
 ## Topics
 
-/topics
+GET /topics
 
-/topics/create
+POST /topics/create
 
-/topics/:id
+GET /topics/:id
 
-/topics/:id/delete
+DELETE /topics/:id/delete
 
 ## Meets
 
-/meets
+GET /meets
 
-/meets/create
+POST /meets/create
 
-/meets/:id
+GET /meets/:id
 
-/meets/:id/delete
+DELETE /meets/:id/delete
