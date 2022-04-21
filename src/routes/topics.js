@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+const students = require('../controllers/students');
 const topics = require('../controllers/topics');
 
 function send(req, res, response) {
@@ -18,7 +19,7 @@ router.get('/:topic_id', async (req, res) => {
     }); send(req, res, response);
 });
 
-router.post('/create', async (req, res) => {
+router.post('/create', students.middlewares.authenticated, async (req, res) => {
     let response = await topics.create({
         name: req.body.name,
         dificult: req.body.dificult,
@@ -26,7 +27,7 @@ router.post('/create', async (req, res) => {
     }); send(req, res, response);
 });
 
-router.delete('/:topic_id/delete', async (req, res) => {
+router.delete('/:topic_id/delete', students.middlewares.authenticated, async (req, res) => {
     let response = await topics.delete({
         _id: req.params.topic_id
     }); send(req, res, response);

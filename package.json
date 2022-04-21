@@ -6,11 +6,15 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.3",
-    "mongoose": "^6.2.9"
+    "jest": "^27.5.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.9",
+    "supertest": "^6.2.2"
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node src/server.js"
+    "start": "node src/index.js",
+    "test": "jest"
   },
   "author": "Anael Jonas",
   "license": "ISC"

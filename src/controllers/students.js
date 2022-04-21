@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const jsonwebtoken = require('jsonwebtoken');
 
 const StudentModel = require('../models/students');
 
@@ -43,17 +44,33 @@ const student = {
 		if (!email || !password) return error;
 		let student = await StudentModel.findOne({ email, password }) || error;
 		if (student.error) return error;
-		return { authorization: student._id };
+
+		let token = await jsonwebtoken.sign({
+			_id: student._id,
+			name: student.name,
+			email: student.email
+		}, 'jwt-secret');
+
+		return { token };
 	},
 
 	middlewares: {
     	authenticated(req, res, next) {
-			let error = { error: 'Não autorizado. Utilize authorization: helloworld nos headers da requisição para poder ter acesso.' };
-			if (req.headers.authorization == 'helloworld') {
-				return next();
-			} else {
-				return res.status(401).send(error);
+			let error = { error: 'Não autorizado. Utilize "authorization" nos headers da requisição para continuar o acesso.' };
+			if (req.headers.authorization) {
+				let verified_student = false;
+
+				try {
+					verified_student = jsonwebtoken.verify(req.headers.authorization, 'jwt-secret');
+				} catch {
+					return res.status(401).send(error);
+				};
+
+				if (verified_student) {
+					return next();
+				};
 			};
+			return res.status(401).send(error);
 	    }
     }
 };
