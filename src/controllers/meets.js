@@ -23,11 +23,11 @@ const meet = {
 
 		if (date.length != '20/04/2022'.length) return error;
 
-		topic_id = await topic.get({ _id: topic_id });
-		students_all = await student.getAll();
+		let check_topic_id = await topic.get({ _id: topic_id });
+		let students_all = await student.getAll();
 
 		try {
-			if (topic_id.error) return error;
+			if (check_topic_id.error) return error;
 			if (students_all.error) return error;
 		} catch {};
 
