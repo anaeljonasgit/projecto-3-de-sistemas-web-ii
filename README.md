@@ -1,6 +1,6 @@
 # Projeto 3 - Projetos de Sistemas Web II
 
-Essa é uma API simplificada de encontros de alunos (meets). Essa API possui 1 teste simples (utilizando Jest); 1 sistema de login (com JWT); e 3 CRUDs de entidades, que funcionam por co-relação e autorização de autenticação.
+Essa é uma API simplificada de encontro de alunos (meets). Ela possui 1 teste simples (utilizando Jest); 1 sistema de login (com JWT); e 3 CRUDs de entidades, que funcionam por co-relação e autorização de autenticação.
 
 ## Students
 
